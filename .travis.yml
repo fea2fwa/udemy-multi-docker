@@ -13,6 +13,13 @@ after_success:
   - docker build -t fea2fwa/udemy-multi-nginx ./nginx
   - docker build -t fea2fwa/udemy-multi-server ./server
   - docker build -t fea2fwa/udemy-multi-worker ./worker
+  # Log into the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take images and push them to docker hub
+  - docker push fea2fwa/udemy-multi-client
+  - docker push fea2fwa/udemy-multi-nginx
+  - docker push fea2fwa/udemy-multi-server
+  - docker push fea2fwa/udemy-multi-worker
 
 
 
